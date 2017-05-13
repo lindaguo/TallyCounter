@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Tally Counter</string>
+
+    <string name="counter_display_default">0</string>
+    <string name="start_count_label">Start Count</string>
+    <string name="increment_label">Increment</string>
+    <string name="counter_name_default">Counter 1</string>
+    <string name="reset">Reset</string>
+    <string name="set_button">Set</string>
+</resources>
