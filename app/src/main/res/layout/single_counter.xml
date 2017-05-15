@@ -38,18 +38,20 @@
     <!-- Counter Display -->
     <TextView
         android:id="@+id/counter_display"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/counter_display_default"
-        android:textSize="@dimen/counter_display_text_size"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/counter_display_margin"/>
+        android:layout_margin="@dimen/counter_display_margin"
+        android:text="@string/counter_display_default"
+        android:textAlignment="center"
+        android:textSize="@dimen/counter_display_text_size" />
 
     <!-- Settings -->
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/start_count_label"/>
+        android:text="@string/start_count_label" />
 
     <LinearLayout
         android:layout_width="match_parent"
