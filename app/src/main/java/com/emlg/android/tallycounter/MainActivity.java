@@ -15,11 +15,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected PowerManager.WakeLock mWakeLock;
 
     private ViewSwitcher mCounterNameView;
-    private Button mIncrementButton;
-    private Button mDecrementButton;
-    private Button mResetButton;
-    private Button mCounterStartSetButton;
-    private Button mCounterIncrementSetButton;
     private EditText mCounterStartEditText;
     private EditText mCounterIncrementEditText;
     private TextView mCounterDisplayTextView;
