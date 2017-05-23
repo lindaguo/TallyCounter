@@ -1,11 +1,15 @@
 package com.emlg.android.tallycounter;
-
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Context;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,9 +23,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText mCounterIncrementEditText;
     private TextView mCounterDisplayTextView;
 
+
     private int mCounterDisplay;
     private int mCounterStartCount;
     private int mCounterIncrement;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +49,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.add_button).setOnClickListener(this);
         findViewById(R.id.sub_button).setOnClickListener(this);
         findViewById(R.id.reset).setOnClickListener(this);
-        findViewById(R.id.counter_increment_set_button).setOnClickListener(this);
-        findViewById(R.id.counter_start_set_button).setOnClickListener(this);
+        findViewById(R.id.setting).setOnClickListener(this);
 
-        mCounterStartEditText = (EditText) findViewById(R.id.counter_start);
-        mCounterIncrementEditText = (EditText) findViewById(R.id.counter_increment);
+
+        Button add = (Button)findViewById(R.id.add_button);
+        Button sub = (Button)findViewById(R.id.sub_button);
+        add.setText(String.valueOf(mCounterIncrement));
+        sub.setText(String.valueOf(mCounterIncrement));
+
 
     }
 
     private void setCounterDisplayText() {
         mCounterDisplayTextView.setText(String.valueOf(mCounterDisplay));
+    }
+
+    public void alertdialog(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogSettingsView = inflater.inflate(R.layout.dialog_settings,null);
+        alert.setView(dialogSettingsView);
+        mCounterStartEditText = (EditText) dialogSettingsView.findViewById(R.id.Start_Count);
+        mCounterIncrementEditText = (EditText) dialogSettingsView.findViewById(R.id.Increment);
+        mCounterStartEditText.setText(String.valueOf(mCounterStartCount));
+        mCounterIncrementEditText.setText(String.valueOf(mCounterIncrement));
+
+
+        alert.setTitle("Settings");
+
+
+
+        alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //Confirm
+                mCounterStartCount = Integer.parseInt(mCounterStartEditText.getText().toString());
+                mCounterIncrement = Integer.parseInt(mCounterIncrementEditText.getText().toString());
+                Button add = (Button)findViewById(R.id.add_button);
+                Button sub = (Button)findViewById(R.id.sub_button);
+                add.setText(String.valueOf(mCounterIncrement));
+                sub.setText(String.valueOf(mCounterIncrement));
+                mCounterDisplay = mCounterStartCount;
+                setCounterDisplayText();
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Cancel
+            }
+        });
+
+        alert.show();
     }
 
     @Override
@@ -75,14 +123,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setCounterDisplayText();
                 break;
             }
-            case R.id.counter_increment_set_button: {
-                mCounterIncrement = Integer.parseInt(mCounterIncrementEditText.getText().toString());
-                removeViewFocus(mCounterIncrementEditText);
-                break;
-            }
-            case R.id.counter_start_set_button: {
-                mCounterStartCount = Integer.parseInt(mCounterStartEditText.getText().toString());
-                removeViewFocus(mCounterStartEditText);
+            case R.id.setting:{
+                alertdialog();
                 break;
             }
             default: {

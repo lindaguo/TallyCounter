@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
@@ -33,6 +34,12 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_autorenew_black_24px"/>
 
+        <ImageButton
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_settings_black_24px" />
+
     </LinearLayout>
 
     <!-- Counter Display -->
@@ -46,61 +53,7 @@
         android:textAlignment="center"
         android:textSize="@dimen/counter_display_text_size" />
 
-    <!-- Settings -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/start_count_label" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/counter_start"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="0"
-            android:inputType="number"/>
-
-        <Button
-            android:id="@+id/counter_start_set_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/set_button"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/increment_label"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/counter_increment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="1"
-            android:inputType="number"/>
-
-        <Button
-            android:id="@+id/counter_increment_set_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/set_button"/>
-
-    </LinearLayout>
 
     <!-- Increment Buttons -->
     <LinearLayout
@@ -108,19 +61,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageButton
+        <Button
             android:id="@+id/add_button"
             android:layout_width="0dp"
-            android:layout_height="@dimen/increment_button_height"
+            android:layout_height="140dp"
             android:layout_weight="2"
-            android:src="@drawable/ic_add_black_24px"/>
+            android:drawableLeft="@drawable/ic_add_black_24px"
+            android:text=""/>
 
-        <ImageButton
+
+        <Button
             android:id="@+id/sub_button"
             android:layout_width="0dp"
-            android:layout_height="@dimen/increment_button_height"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/ic_remove_black_24px"/>
+            android:drawableLeft="@drawable/ic_remove_black_24px"
+            android:text=""/>
 
     </LinearLayout>
 
