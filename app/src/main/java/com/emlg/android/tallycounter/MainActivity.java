@@ -1,14 +1,9 @@
 package com.emlg.android.tallycounter;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Context;
-import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +11,6 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    protected PowerManager.WakeLock mWakeLock;
 
     private ViewSwitcher mCounterNameView;
     private EditText mCounterStartEditText;
@@ -33,10 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "TallyCountWakeLock");
-        mWakeLock.acquire();
 
         mCounterDisplay = 0;
         mCounterIncrement = 1;
@@ -76,11 +66,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCounterIncrementEditText.setText(String.valueOf(mCounterIncrement));
 
 
-        alert.setTitle("Settings");
+        alert.setTitle(R.string.settings_title);
 
-
-
-        alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //Confirm
                 mCounterStartCount = Integer.parseInt(mCounterStartEditText.getText().toString());
@@ -94,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Cancel
             }
@@ -132,18 +120,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
         }
-    }
-
-    private void removeViewFocus(View view) {
-        view.clearFocus();
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        mCounterDisplayTextView.requestFocus();
-    }
-
-    @Override
-    public void onStop() {
-        mWakeLock.release();
-        super.onStop();
     }
 }
