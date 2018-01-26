@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp">
 
     <!-- Counter title row -->
     <LinearLayout
@@ -13,15 +14,16 @@
 
         <ViewSwitcher
             android:id="@+id/counter_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="3">
 
             <TextView
                 android:id="@+id/counter_name_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/counter_name_default"/>
+                android:text="@string/counter_name_default"
+                android:textSize="20dp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -40,6 +42,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_settings_black_24px" />
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete_black_24px"/>
 
     </LinearLayout>
 

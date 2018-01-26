@@ -58,6 +58,7 @@ public class CounterView extends LinearLayout implements View.OnClickListener{
         findViewById(R.id.sub_button).setOnClickListener(this);
         findViewById(R.id.reset).setOnClickListener(this);
         findViewById(R.id.setting).setOnClickListener(this);
+        findViewById(R.id.delete).setOnClickListener(this);
 
 
         Button add = (Button)findViewById(R.id.add_button);
@@ -131,6 +132,10 @@ public class CounterView extends LinearLayout implements View.OnClickListener{
             }
             case R.id.setting:{
                 alertdialog();
+                break;
+            }
+            case R.id.delete:{
+                removeAllViews();
                 break;
             }
             default: {
