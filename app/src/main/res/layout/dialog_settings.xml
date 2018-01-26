@@ -18,7 +18,6 @@
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="16dp"
         android:text="@string/counter_name_default" />
 
     <TextView
@@ -26,17 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Start Count" />
 
     <EditText
         android:id="@+id/Start_Count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="20dp"
         android:inputType="number" />
 
     <TextView
@@ -44,17 +41,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Increment" />
 
     <EditText
         android:id="@+id/Increment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="4dp"
         android:fontFamily="sans-serif"
         android:inputType="number" />
 </LinearLayout>
